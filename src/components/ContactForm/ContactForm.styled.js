@@ -5,12 +5,14 @@ export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin-top: 30px;
 `;
 
 export const Label = styled.label`
   font-size: 30px;
   display: flex;
   align-items: center;
+  
 `;
 
 export const StyledField = styled(Field)`
@@ -26,9 +28,8 @@ export const StyledErrorMessage = styled(ErrorMessage)`
 `;
 
 export const Button = styled.button`
-  margin: 0 auto;
+  margin: 20px auto 0;
   font-size: 20px;
-  margin-top: 5px;
   cursor: pointer;
   width: 250px;
 `;

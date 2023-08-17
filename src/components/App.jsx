@@ -1,14 +1,32 @@
 import { Component } from 'react';
+import Modal from 'react-modal';
+import { AiOutlineUserAdd, AiOutlineClose } from 'react-icons/ai';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
+import { Layout, BtnOpen, Contacts, BtnClose, Title, SubTitle } from './Loyaut';
 
 const localStorageKey = 'contacts';
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    width: '450px',
+  },
+};
+
+Modal.setAppElement('#root');
 
 export class App extends Component {
   state = {
     contacts: [],
     filter: '',
+    isModalOpen: false,
   };
 
   componentDidMount() {
@@ -28,6 +46,10 @@ export class App extends Component {
       );
     }
   }
+
+  openModal = () => this.setState({ isModalOpen: true });
+
+  closeModal = () => this.setState({ isModalOpen: false });
 
   addContact = newContact => {
     this.state.contacts.some(
@@ -64,24 +86,32 @@ export class App extends Component {
     );
 
     return (
-      <div
-        style={{
-          height: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          color: '#010101',
-        }}
-      >
-        <h1>Phonebook</h1>
-        <ContactForm onAddContact={this.addContact} />
+      <Layout>
+        <Title>Phonebook</Title>
 
-        <h2>Contacts</h2>
         <Filter onChange={this.searchByFilter} filter={filter} />
+        <Contacts>
+          <SubTitle>Contacts</SubTitle>
+          <BtnOpen onClick={this.openModal}>
+            <AiOutlineUserAdd size={45} />
+          </BtnOpen>
+        </Contacts>
         <ContactList contacts={visiblesContacts} onClick={this.handleDelete} />
-      </div>
+        <Modal
+          isOpen={this.state.isModalOpen}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+        >
+          <BtnClose onClick={this.closeModal}>
+            <AiOutlineClose size={25} />
+          </BtnClose>
+          <ContactForm
+            onAddContact={this.addContact}
+            onClose={this.closeModal}
+            style={customStyles}
+          />
+        </Modal>
+      </Layout>
     );
   }
 }

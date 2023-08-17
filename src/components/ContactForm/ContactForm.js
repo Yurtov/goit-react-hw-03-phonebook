@@ -31,7 +31,7 @@ const schema = Yup.object().shape({
     .required('Required'),
 });
 
-export const ContactForm = ({ onAddContact }) => (
+export const ContactForm = ({ onAddContact, onClose }) => (
   <Formik
     initialValues={{
       name: '',
@@ -43,6 +43,7 @@ export const ContactForm = ({ onAddContact }) => (
         id: nanoid(),
         ...values,
       });
+      onClose();
       actions.resetForm();
     }}
   >
@@ -61,7 +62,9 @@ export const ContactForm = ({ onAddContact }) => (
         <StyledErrorMessage name="number" component="div" />
       </Label>
 
-      <Button type="submit">Add contact</Button>
+      <Button type="submit">
+        Add contact
+      </Button>
     </StyledForm>
   </Formik>
 );
