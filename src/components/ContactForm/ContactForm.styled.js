@@ -9,6 +9,8 @@ export const StyledForm = styled(Form)`
 
 export const Label = styled.label`
   font-size: 30px;
+  display: flex;
+  align-items: center;
 `;
 
 export const StyledField = styled(Field)`

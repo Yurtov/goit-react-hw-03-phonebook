@@ -9,6 +9,7 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
+  outline: 1px solid #04941f;
   height: 34px;
   font-size: 25px;
 `;
