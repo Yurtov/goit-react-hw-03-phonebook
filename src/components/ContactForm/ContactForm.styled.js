@@ -16,7 +16,7 @@ export const Label = styled.label`
 `;
 
 export const StyledField = styled(Field)`
-  margin-left: 10px;
+  margin-left: 15px;
   height: 30px;
   font-size: 20px;
 `;
