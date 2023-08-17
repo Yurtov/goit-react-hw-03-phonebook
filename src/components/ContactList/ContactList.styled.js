@@ -7,15 +7,17 @@ export const List = styled.ul`
   font-size: 25px;
 `;
 
-export const ContactItem = styled.li`
-`;
+export const ContactItem = styled.li``;
 
 export const Span = styled.span`
   display: flex;
-  gap: 10px;
+  gap: 15px;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const DeleteBtn = styled.button`
-  font-size: 17px;
+  border: none;
+  display: flex;
+  align-items: center;
 `;

@@ -1,6 +1,7 @@
 import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import * as Yup from 'yup';
+import { AiOutlineUser, AiOutlinePhone } from 'react-icons/ai';
 import {
   StyledForm,
   Label,
@@ -47,14 +48,14 @@ export const ContactForm = ({ onAddContact }) => (
   >
     <StyledForm>
       <Label>
-        Name
+        Name <AiOutlineUser />
         <StyledField name="name" />
         <br />
         <StyledErrorMessage name="name" component="div" />
       </Label>
 
       <Label>
-        Number
+        Number <AiOutlinePhone />
         <StyledField name="number" />
         <br />
         <StyledErrorMessage name="number" component="div" />

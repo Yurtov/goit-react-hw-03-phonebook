@@ -3,11 +3,31 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 
+const localStorageKey = 'contacts';
+
 export class App extends Component {
   state = {
     contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    const savedContacts = localStorage.getItem(localStorageKey);
+    if (savedContacts !== null) {
+      this.setState({
+        contacts: JSON.parse(savedContacts),
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem(
+        localStorageKey,
+        JSON.stringify(this.state.contacts)
+      );
+    }
+  }
 
   addContact = newContact => {
     this.state.contacts.some(

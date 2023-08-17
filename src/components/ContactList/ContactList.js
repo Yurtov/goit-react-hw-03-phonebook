@@ -1,4 +1,5 @@
 import { List, ContactItem, Span, DeleteBtn } from './ContactList.styled';
+import { AiOutlineDelete } from 'react-icons/ai';
 
 export const ContactList = ({ contacts, onClick }) => {
   return (
@@ -8,7 +9,7 @@ export const ContactList = ({ contacts, onClick }) => {
           <Span>
             {contact.name}: {contact.number}
             <DeleteBtn type="button" onClick={() => onClick(contact.id)}>
-              Delete
+              <AiOutlineDelete size={27} />
             </DeleteBtn>
           </Span>
         </ContactItem>
