@@ -20,4 +20,5 @@ export const DeleteBtn = styled.button`
   border: none;
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
